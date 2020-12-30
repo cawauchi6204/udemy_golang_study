@@ -3,23 +3,16 @@ package main
 import "fmt"
 
 func main() {
-	var arr1 [3]int
-	fmt.Println(arr1)
-	fmt.Printf("%T\n", arr1)
+	var x interface{}
+	fmt.Println(x)
 
-	var arr2 [3]string = [3]string{"A", "B"}
-	fmt.Println(arr2)
+	x = 1
+	fmt.Println(x)
+	x = "A"
+	fmt.Println(x)
+	x = 3.14
+	fmt.Println(x)
 
-	arr3 := [3]int{1, 2, 3}
-	fmt.Println(arr3)
-
-	arr4 := [...]string{"C", "D"}
-	fmt.Println(arr4)
-	fmt.Printf("%T\n", arr4)
-
-	fmt.Println(arr1[0])
-
-	arr2[2] = "C"
-	fmt.Println(arr2)
-
+	x = 2
+	// interfaceは全てと互換性を持つだけで組み合わせることができない
 }
