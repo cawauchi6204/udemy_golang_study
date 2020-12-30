@@ -8,5 +8,4 @@ func main() {
 
 	fl := 3.2
 	fmt.Println(fl64 + fl)
-
 }
