@@ -1,25 +1,15 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
+import "fmt"
 
-// go goroutin
+// init
+// mainルーティンよりも先に行われるのがinitルーティン
+// 複数
 
-func sub() {
-	for {
-		fmt.Println("Sub Loop")
-		time.Sleep(100 * time.Millisecond)
-	}
+func init() {
+	fmt.Println("init")
 }
 
 func main() {
-	go sub()
-	go sub()
-
-	for {
-		fmt.Println("Main Loop")
-		time.Sleep(200 * time.Millisecond)
-	}
+	fmt.Println("Main")
 }
