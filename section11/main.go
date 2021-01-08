@@ -10,19 +10,28 @@ type Point struct {
 	C float64
 }
 
+func Update(p Point) {
+	p.A = 100
+	p.B = "Update"
+	p.C = 2.14
+}
+
+func Update2(p *Point) {
+	p.A = 100
+	p.B = "Update"
+	p.C = 2.14
+}
+
 func main() {
-	var p Point
+	p := Point{}
+	Update(p)
 	fmt.Println(p)
 
-	p2 := Point{A: 1, B: "Go", C: 1.2}
+	p2 := &Point{}
+	Update2(p2)
 	fmt.Println(p2)
-	fmt.Println(p2.A, p2.B, p2.C)
 
-	p2.A = 10
-	fmt.Println(p2.A)
-
-	p3 := Point{1, "Python", 3.14}
+	p3 := new(Point)
+	Update2(p3)
 	fmt.Println(p3)
-	p4 := Point{A: 2}
-	fmt.Println(p4)
 }
