@@ -2,103 +2,66 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"os"
+	"time"
 )
 
-//os
+//time
 
 func main() {
-	// Exit
-	// os.Exit(1)
-	// fmt.Println("Start")
+	//時間の生成
+	//今の時間
+	// t := time.Now()
+	// fmt.Println(t)
 
-	// defer func() {
-	// 	fmt.Println("defer")
-	// }()
-	// os.Exit(0)
+	// //指定した時間を生成
+	// t2 := time.Date(2020, 6, 10, 10, 10, 10, 0, time.Local)
+	// fmt.Println(t2)
+	// fmt.Println(t2.Year())
+	// fmt.Println(t2.YearDay())
+	// fmt.Println(t2.Month())
+	// fmt.Println(t2.Weekday())
+	// fmt.Println(t2.Day())
+	// fmt.Println(t2.Hour())
+	// fmt.Println(t2.Minute())
+	// fmt.Println(t2.Second())
+	// fmt.Println(t2.Nanosecond())
+	// fmt.Println(t2.Zone())
 
-	// _, err := os.Open("A.txt")
-	// if err != nil {
-	// 	log.Fatalln(err)
-	// }
+	//time.Duration型を返す
+	// fmt.Println(time.Hour)
+	// fmt.Printf("%T\n", time.Hour)
+	// fmt.Println(time.Minute)
+	// fmt.Println(time.Second)
+	// fmt.Println(time.Millisecond)
+	// fmt.Println(time.Microsecond)
+	// fmt.Println(time.Nanosecond)
 
-	// コマンドライン引数はos.Args[n]で調べることができる
-	// 0番目はコマンドが入る
-	// fmt.Println(os.Args[0])
-	// fmt.Println(os.Args[1])
-	// fmt.Println(os.Args[2])
-	// fmt.Println(os.Args[3])
+	// //time.Duration型を文字型から生成する
+	// d, _ := time.ParseDuration("2h30m")
+	// fmt.Println(d)
 
-	// //os.Argsの要素数を表示
-	// fmt.Printf("length=%d\n", len(os.Args))
-	// //os.Argsの中身を全て表示
-	// for i, v := range os.Args {
-	// 	fmt.Println(i, v)
-	// }
+	// t3 := time.Now()
+	// t3 = t3.Add(2*time.Minute + 15*time.Second)
+	// fmt.Println(t3)
+	//現在時刻の2分30秒後を表すtime.Time型の取得
 
-	//ファイル操作
-	//Open
-	// f, err := os.Open("test.txt")
-	// if err != nil {
-	// 	log.Fatalln(err)
-	// }
+	//時刻の差分を取得
+	// t5 := time.Date(2021, 7, 24, 0, 0, 0, 0, time.Local)
+	// t6 := time.Now()
+	// fmt.Println(t6)
 
-	// defer f.Close()
+	// //t5 - t6
+	// d2 := t5.Sub(t6)
+	// fmt.Println(d2)
 
-	//ファイル操作
-	//Create
-	// f, _ := os.Create("foo.txt")
+	// //時刻を比較する
+	// fmt.Println(t6.Before(t5))
+	// fmt.Println(t6.After(t5))
+	// fmt.Println(t5.Before(t6))
+	// fmt.Println(t5.After(t6))
 
-	// f.Write([]byte("Hello\n"))
-
-	// f.WriteAt([]byte("Golang"), 6)
-
-	// f.Seek(0, os.SEEK_END)
-
-	// f.WriteString("Yeah")
-
-	//ファイル操作
-	//Read
-	// f, err := os.Open("foo.txt")
-	// if err != nil {
-	// 	log.Fatalln(err)
-	// }
-
-	// defer f.Close()
-
-	// bs := make([]byte, 128)
-
-	// n, err := f.Read(bs)
-	// fmt.Println(n)
-	// fmt.Println(string(bs))
-
-	// bs2 := make([]byte, 128)
-
-	// nn, err := f.ReadAt(bs2, 10)
-	// fmt.Println(nn)
-	// fmt.Println(string(bs2))
-
-	// ファイル操作
-	// OpenFile
-	// O_RDONLY 読み込み専用
-	// O_WRONLY 書き込み専用
-	// O_RDWR 読み書き可能か
-	// O_APPEND ファイル末尾に追記
-	// O_CREATE ファイルがなければ作成
-	// O_TRUNC 可能であればファイルの内容をオープンに空にする
-	// f, err := os.OpenFile("foo.txt", os.O_RDONLY, 0666)
-	f, err := os.OpenFile("foo.txt", os.O_RDWR|os.O_CREATE, 0666)
-	//引 1.ファイル名 2.フラグ 3.パーミッション
-	// |を使うことで複数のフラグを使うことができる
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	defer f.Close()
-
-	bs := make([]byte, 128)
-	n, err := f.Read(bs)
-	fmt.Println(n)
-	fmt.Println(string(bs))
+	//指定時間のスリープ
+	//5秒間停止
+	time.Sleep(10 * time.Second)
+	fmt.Println("10秒間停止")
 }
