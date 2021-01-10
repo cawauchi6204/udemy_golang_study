@@ -1,35 +1,34 @@
 package main
 
 import (
-	"flag"
-	"fmt"
+	"log"
+	"os"
 )
 
 //time
 
 func main() {
-	// コマンドラインのオプション処理
-	// コマンドラインを処理するサンプル
-	// go run section16/main.go -n 20 -m message -x
-	var (
-		max int
-		msg string
-		x   bool
-	)
+	// log.SetOutput(os.Stdout)
+	// スタンダードアウト
 
-	flag.IntVar(&max, "n", 32, "処理数の最大値")
-	flag.StringVar(&msg, "m", "", "処理メッセージ")
-	flag.BoolVar(&x, "x", false, "拡張オプション")
-	// 型名+Var
-	// (変数ポインター,引数名,デフォルト値,)
+	/*
+		log.Print("Log\n")
+		log.Println("Log2")
+		log.Printf("Log%d\n", 3)
+	*/
 
-	flag.Parse()
+	/*
+		log.Fatal("Log\n")
+		log.Fatalln("Log2")
+		log.Fatalf("Log%d\n", 3)
+	*/
 
-	fmt.Println("処理数の最大値 =", max)
-	fmt.Println("処理メッセージ =", msg)
-	fmt.Println("拡張オプション =", x)
+	f, err := os.Create("test.log")
+	if err != nil {
+		return
+	}
 
-	// 	処理数の最大値 = 20
-	//	処理メッセージ = message
-	// 	拡張オプション = true
+	log.SetOutput(f)
+	log.Println("ファイルに書き込み")
+
 }
