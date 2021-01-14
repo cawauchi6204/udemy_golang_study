@@ -2,14 +2,17 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/google/uuid"
+	"io/ioutil"
+	"log"
+	"os"
 )
 
 func main() {
-	uuidObj, _ := uuid.NewUUID()
-	fmt.Println("  ", uuidObj.String())
+	f, _ := os.Open("foo.txt")
+	bs, _ := ioutil.ReadAll(f)
+	fmt.Println(string(bs))
 
-	uuidObj2, _ := uuid.NewRandom()
-	fmt.Println(" ", uuidObj2.String())
+	if err := ioutil.WriteFile("bar.txt", bs, 0666); err != nil {
+		log.Fatal(err)
+	}
 }
