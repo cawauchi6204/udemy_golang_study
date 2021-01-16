@@ -1,34 +1,18 @@
 package main
 
 import (
-	"log"
-	"os"
+	"crypto/md5"
+	"fmt"
+	"io"
 )
 
-//time
-
 func main() {
-	// log.SetOutput(os.Stdout)
-	// スタンダードアウト
+	h := md5.New()
 
-	/*
-		log.Print("Log\n")
-		log.Println("Log2")
-		log.Printf("Log%d\n", 3)
-	*/
+	io.WriteString(h, "ABCDE")
 
-	/*
-		log.Fatal("Log\n")
-		log.Fatalln("Log2")
-		log.Fatalf("Log%d\n", 3)
-	*/
+	fmt.Println(h.Sum(nil))
 
-	f, err := os.Create("test.log")
-	if err != nil {
-		return
-	}
-
-	log.SetOutput(f)
-	log.Println("ファイルに書き込み")
-
+	s := fmt.Sprintf("%x", h.Sum(nil))
+	fmt.Println(s)
 }
